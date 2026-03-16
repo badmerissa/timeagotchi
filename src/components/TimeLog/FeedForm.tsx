@@ -24,8 +24,7 @@ export function FeedForm({ onSubmit }: Props) {
 
     const parsedHours = parseFloat(hours)
     if (!project.trim()) return setError('Project name is required')
-    if (isNaN(parsedHours) || parsedHours <= 0) return setError('Hours must be a positive number')
-    if (parsedHours > 24) return setError('Hours cannot exceed 24')
+    if (isNaN(parsedHours) || parsedHours <= 0) return setError('Enter a valid number of hours')
     if (!date) return setError('Date is required')
 
     addEntry({ date, project: project.trim(), description: description.trim(), hours: parsedHours })
@@ -108,26 +107,11 @@ export function FeedForm({ onSubmit }: Props) {
           value={hours}
           onChange={(e) => setHours(e.target.value)}
           placeholder="1.5"
-          min="0.1"
-          max="24"
-          step="0.25"
+          min="0.01"
+          step="any"
           className="pixel-input"
           required
         />
-        {/* Quick-select buttons */}
-        <div className="flex gap-1 mt-2">
-          {[0.25, 0.5, 1, 2, 4, 8].map((h) => (
-            <button
-              key={h}
-              type="button"
-              onClick={() => setHours(String(h))}
-              className="flex-1 pixel-btn border-tama-border text-gray-400 hover:border-tama-green hover:text-tama-green"
-              style={{ fontSize: '7px', padding: '4px 2px' }}
-            >
-              {h}h
-            </button>
-          ))}
-        </div>
       </div>
 
       <button
