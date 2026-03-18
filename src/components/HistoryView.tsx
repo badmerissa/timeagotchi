@@ -41,7 +41,7 @@ export function HistoryView() {
     <div className="flex flex-col gap-6">
       {/* All-time summary */}
       <div className="pixel-panel p-3">
-        <div className="font-pixel text-gray-400 mb-3" style={{ fontSize: '8px' }}>ALL-TIME STATS</div>
+        <h2 className="font-pixel text-gray-400 mb-3" style={{ fontSize: '8px' }}>ALL-TIME STATS</h2>
         <div className="grid grid-cols-2 gap-3">
           <div className="text-center">
             <div className="text-tama-green font-pixel" style={{ fontSize: '16px' }}>{allTimeHours.toFixed(1)}</div>
@@ -69,7 +69,7 @@ export function HistoryView() {
 
       {/* Week picker */}
       <div>
-        <div className="font-pixel text-gray-400 mb-2" style={{ fontSize: '8px' }}>WEEK HISTORY</div>
+        <h3 className="font-pixel text-gray-400 mb-2" style={{ fontSize: '8px' }}>WEEK HISTORY</h3>
         <div className="flex gap-1 flex-wrap">
           {weeks.map((w) => (
             <button

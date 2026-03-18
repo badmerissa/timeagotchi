@@ -5,10 +5,11 @@ interface Props {
   level: number
   activeAccessory: string | null
   isFeeding?: boolean
+  petName?: string
 }
 
 // Pixel art pet using SVG — different expressions per mood
-export function PetSprite({ mood, level, activeAccessory, isFeeding = false }: Props) {
+export function PetSprite({ mood, level, activeAccessory, isFeeding = false, petName = 'Tama' }: Props) {
   const animClass = {
     thriving: 'animate-bounce_pet',
     happy: 'animate-blink',
@@ -60,7 +61,10 @@ export function PetSprite({ mood, level, activeAccessory, isFeeding = false }: P
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           style={{ imageRendering: 'pixelated' }}
+          aria-label={`${petName} the ${mood} virtual pet`}
+          role="img"
         >
+          <title>{`${petName} – virtual pet`}</title>
           {/* Body */}
           <rect x="6" y="8" width="12" height="12" rx="1" fill={bodyColor} />
           {/* Head bump */}

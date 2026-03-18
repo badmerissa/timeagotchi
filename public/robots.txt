@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://timeagotchi.vercel.app/sitemap.xml

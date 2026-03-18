@@ -37,9 +37,9 @@ export function FeedForm({ onSubmit }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-sm mx-auto">
-      <div className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
+      <h2 className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
         FEED YOUR PET
-      </div>
+      </h2>
       <div className="text-center text-gray-500 font-pixel mb-2" style={{ fontSize: '8px' }}>
         Log time to keep your pet happy
       </div>

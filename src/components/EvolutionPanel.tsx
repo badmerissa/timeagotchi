@@ -16,9 +16,9 @@ export function EvolutionPanel() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
+      <h2 className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
         EVOLUTION
-      </div>
+      </h2>
 
       {/* Level display */}
       <div className="pixel-panel p-4 flex flex-col items-center gap-3">

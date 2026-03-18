@@ -21,7 +21,14 @@ export function HealthBar({ healthPct }: Props) {
           {healthPct}%
         </span>
       </div>
-      <div className="flex gap-0.5">
+      <div
+        className="flex gap-0.5"
+        role="progressbar"
+        aria-valuenow={healthPct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`Health: ${healthPct}%`}
+      >
         {Array.from({ length: blocks }).map((_, i) => (
           <div
             key={i}
