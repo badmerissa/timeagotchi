@@ -4,13 +4,69 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Timeagotchi</title>
+
+    <!-- Primary meta -->
+    <title>Timeagotchi – Gamify Your Time Tracking | Virtual Pet Productivity App</title>
+    <meta name="description" content="Timeagotchi turns time tracking into a game. Log hours, grow your virtual pet, and see weekly productivity reports — all in your browser, free." />
+    <meta name="theme-color" content="#1a1a2e" />
+    <link rel="canonical" href="https://timeagotchi.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="Timeagotchi" />
+    <meta property="og:title"       content="Timeagotchi – Gamify Your Time Tracking" />
+    <meta property="og:description" content="Log hours, grow your virtual pet, and see weekly productivity reports. Free, browser-based." />
+    <meta property="og:image"       content="https://timeagotchi.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url"         content="https://timeagotchi.vercel.app/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Timeagotchi – Gamify Your Time Tracking" />
+    <meta name="twitter:description" content="Log hours, grow your virtual pet, and see weekly productivity reports." />
+    <meta name="twitter:image"       content="https://timeagotchi.vercel.app/og-image.png" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Timeagotchi",
+      "url": "https://timeagotchi.vercel.app/",
+      "description": "A gamified time tracking app where you grow a virtual pet by logging your working hours.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Merissa"
+      },
+      "screenshot": "https://timeagotchi.vercel.app/og-image.png",
+      "featureList": [
+        "Time tracking",
+        "Virtual pet",
+        "Weekly productivity reports",
+        "CSV export",
+        "Pet evolution system"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

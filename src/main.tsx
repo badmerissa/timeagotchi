@@ -1,15 +1,8 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { ViteReactSSG } from 'vite-react-ssg'
 import { inject } from '@vercel/analytics'
-import { Analytics } from "@vercel/analytics/next"
 import './index.css'
-import App from './App'
+import { routes } from './App'
 
 inject()
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-    <Analytics/>
-  </StrictMode>,
-)
+export const createRoot = ViteReactSSG({ routes })

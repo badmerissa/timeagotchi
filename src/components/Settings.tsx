@@ -23,9 +23,9 @@ export function Settings() {
 
   return (
     <form onSubmit={handleSave} className="flex flex-col gap-6 max-w-sm mx-auto">
-      <div className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
+      <h2 className="text-center font-pixel text-tama-green mb-2" style={{ fontSize: '11px' }}>
         SETTINGS
-      </div>
+      </h2>
 
       <div>
         <label className="block text-gray-400 font-pixel mb-1" style={{ fontSize: '8px' }}>

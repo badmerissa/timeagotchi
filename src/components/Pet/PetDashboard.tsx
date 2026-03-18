@@ -43,7 +43,7 @@ export function PetDashboard({ onFeedClick, isFeeding }: Props) {
     <div className="flex flex-col items-center gap-4">
       {/* Pet name + level */}
       <div className="text-center">
-        <div className="text-tama-green font-pixel text-sm">{settings.petName}</div>
+        <h2 className="text-tama-green font-pixel text-sm">{settings.petName}</h2>
         <div className="text-gray-500 font-pixel mt-1" style={{ fontSize: '8px' }}>
           Lv.{evolution.level} {getLevelLabel(evolution.level)}
         </div>
@@ -56,6 +56,7 @@ export function PetDashboard({ onFeedClick, isFeeding }: Props) {
           level={evolution.level}
           activeAccessory={evolution.activeAccessory}
           isFeeding={isFeeding}
+          petName={settings.petName}
         />
       </div>
 

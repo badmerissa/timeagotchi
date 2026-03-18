@@ -1,19 +1,14 @@
-import { useRef, useState } from 'react'
+import { useState, useRef } from 'react'
 import { useCurrentWeekStats, usePreviousWeekStats } from '../store/petSelectors'
 import { getWeeklyEncouragement } from '../utils/petLogic'
 import { formatWeekRange } from '../utils/dateHelpers'
 import { downloadCsv } from '../utils/csv'
 import { format } from 'date-fns'
 
-interface Props {
-  onClose?: () => void
-  showPrevious?: boolean
-}
-
-export function WeeklyReport({ onClose, showPrevious = false }: Props) {
+export function WeeklyReportPage() {
   const currentStats = useCurrentWeekStats()
   const prevStats = usePreviousWeekStats()
-  const [viewPrev, setViewPrev] = useState(showPrevious)
+  const [viewPrev, setViewPrev] = useState(false)
   const reportRef = useRef<HTMLDivElement>(null)
   const [capturing, setCapturing] = useState(false)
 
@@ -61,31 +56,20 @@ export function WeeklyReport({ onClose, showPrevious = false }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-      <div className="pixel-panel max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div className="max-w-md mx-auto py-4">
+      <div className="pixel-panel">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-tama-border">
           <h2 className="font-pixel text-tama-green" style={{ fontSize: '10px' }}>
             WEEKLY REPORT
           </h2>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setViewPrev(!viewPrev)}
-              className="pixel-btn border-tama-border text-gray-400 hover:border-tama-blue hover:text-tama-blue font-pixel"
-              style={{ fontSize: '7px', padding: '4px 8px' }}
-            >
-              {viewPrev ? 'THIS WEEK' : 'PREV WEEK'}
-            </button>
-            {onClose && (
-              <button
-                onClick={onClose}
-                className="pixel-btn border-tama-red text-tama-red font-pixel"
-                style={{ fontSize: '9px', padding: '4px 8px' }}
-              >
-                ✖
-              </button>
-            )}
-          </div>
+          <button
+            onClick={() => setViewPrev(!viewPrev)}
+            className="pixel-btn border-tama-border text-gray-400 hover:border-tama-blue hover:text-tama-blue font-pixel"
+            style={{ fontSize: '7px', padding: '4px 8px' }}
+          >
+            {viewPrev ? 'THIS WEEK' : 'PREV WEEK'}
+          </button>
         </div>
 
         {/* Report content */}
@@ -107,13 +91,20 @@ export function WeeklyReport({ onClose, showPrevious = false }: Props) {
             <StatBox label="HEALTH" value={stats.healthPct.toString()} unit="%" color={moodColor} />
           </div>
 
-          {/* Health bar */}
+          {/* Progress bar */}
           <div>
             <div className="flex justify-between mb-1 font-pixel" style={{ fontSize: '7px' }}>
               <span className="text-gray-500">PROGRESS</span>
               <span className={moodColor}>{stats.mood.toUpperCase()}</span>
             </div>
-            <div className="h-4 bg-tama-screen border border-tama-border rounded overflow-hidden">
+            <div
+              className="h-4 bg-tama-screen border border-tama-border rounded overflow-hidden"
+              role="progressbar"
+              aria-valuenow={stats.healthPct}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`Weekly progress: ${stats.healthPct}%`}
+            >
               <div
                 className={`h-full ${barColor} transition-all duration-500`}
                 style={{ width: `${Math.min(100, stats.healthPct)}%` }}
@@ -124,9 +115,9 @@ export function WeeklyReport({ onClose, showPrevious = false }: Props) {
           {/* Project breakdown */}
           {stats.projectBreakdown.length > 0 && (
             <div>
-              <div className="font-pixel text-gray-400 mb-2" style={{ fontSize: '7px' }}>
+              <h3 className="font-pixel text-gray-400 mb-2" style={{ fontSize: '7px' }}>
                 TIME BY PROJECT
-              </div>
+              </h3>
               <div className="flex flex-col gap-2">
                 {stats.projectBreakdown.map((p, i) => (
                   <div key={p.project}>
@@ -157,10 +148,10 @@ export function WeeklyReport({ onClose, showPrevious = false }: Props) {
             {getWeeklyEncouragement(stats.mood)}
           </div>
 
-          {/* Top 3 projects */}
+          {/* Top projects */}
           {stats.projectBreakdown.length > 0 && (
             <div>
-              <div className="font-pixel text-gray-500 mb-1" style={{ fontSize: '7px' }}>TOP PROJECTS</div>
+              <h3 className="font-pixel text-gray-500 mb-1" style={{ fontSize: '7px' }}>TOP PROJECTS</h3>
               {stats.projectBreakdown.slice(0, 3).map((p, i) => (
                 <div key={p.project} className="font-pixel text-gray-300 flex gap-2" style={{ fontSize: '8px' }}>
                   <span className="text-tama-yellow">#{i + 1}</span>
